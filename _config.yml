@@ -28,11 +28,11 @@ description: Write an awesome description for your new site here. You can edit t
 navigation:
 - title: Link 1
   subfolderitems:
-  - page: Sub Link 1
+  - title: Sub Link 1
     url: "/thing1.html"
-  - page: Sub Link 2
+  - title: Sub Link 2
     url: "/thing2.html"
-  - page: Sub Link 3
+  - title: Sub Link 3
     url: "/thing3.html"
 - title: Link 2
   url: "/link2"
