@@ -1,0 +1,55 @@
+<nav class="sitenav row">
+  <div class="home-link">
+    <a href="/">Home</a>
+  </div>
+
+  <ul class="sitenav__links">
+    {% for item in site.navigation %} {% if item.subfolderitems[0] %}
+    <li class="sub-menu-parent">
+      <a href="#">{{ item.title }}</a>
+      <ul class="sub-menu">
+        {% for entry in item.subfolderitems %}
+        <li>
+          <a href="{{ entry.url }}">{{ entry.page }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% else %}
+    <li>
+      <a href="{{ item.path }}">{{ item.title }}</a>
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
+
+  <a href="#" class="menu-button" id="menuButton">
+    <span class="burger-icon"></span>
+  </a>
+
+  <div class="offcanvas bg-dark">
+    <div class="offcanvas__content">
+      <ul class="mobile-sitenav__links">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        {% for item in site.navigation %} {% if item.subfolderitems[0] %}
+        <li class="mobile-sub-menu-parent">
+          <a href="#" class="link">{{ item.title }}</a>
+          <ul class="mobile-sub-menu">
+            {% for entry in item.subfolderitems %}
+            <li>
+              <a href="{{ entry.url }}">{{ entry.page }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
+        <li>
+          <a href="{{ item.path }}">{{ item.title }}</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+    </div>
+  </div>
+  </div>
+</nav>

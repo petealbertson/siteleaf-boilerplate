@@ -1,0 +1,148 @@
+.sitenav {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  align-items: center;
+  grid-gap: 1rem;
+  padding: 10px;
+
+  ul {
+    list-style: none;
+  }
+}
+
+.home-link {
+  a {
+    padding: 0.5rem;
+  }
+}
+
+.sitenav__links {
+  display: none;
+
+  @include MQ(S) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    align-items: center;
+    margin: 0;
+  }
+
+  li {
+    position: relative;
+    min-width: 100px;
+    margin: 0;
+    
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+   }
+  }
+}
+
+.offcanvas {
+  position: fixed;
+  z-index: 250;
+  right: 0;
+  top: 0;
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  padding: 2rem;
+  background: darkgray;
+  transform: translateX(100%);
+  transition: transform 350ms ease;
+  overflow-y: scroll;
+  
+  &.active {
+    transform: translateX(0);
+  }
+  
+  & * {
+    color: #fff;
+  }
+
+
+  .offcanvas__content {
+    position: relative;
+    min-height: 100%;
+  }
+
+  .close {
+    width: 120px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-details {
+    padding-bottom: 0.5em;
+  }
+}
+
+.menu-button {
+	display: inline-block;
+	padding: .5rem;
+  
+  @include MQ(S) {
+    display: none;
+  }
+}
+
+.burger-icon {
+	@include burger(25px, 3px, 5px, #444);
+}
+
+.menu-button.is-active .burger-icon {
+	@include burger-to-cross;
+}
+
+
+// Mobile menu animation
+body {
+  transition: transform 300ms ease;
+  
+  &.menu-open {
+    transform: translateX(-250px);
+  }
+}
+
+
+
+// Dropdown sub menu navigation
+.sub-menu-parent {
+  position: relative;
+}
+
+.sub-menu { 
+  visibility: hidden; /* hides sub-menu */
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0 0 0;
+  margin: 0;
+  transform: translateY(-2em);
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+
+  li {
+    margin-bottom: 1rem;
+  }
+}
+
+.sub-menu-parent:focus .sub-menu,
+.sub-menu-parent:focus-within .sub-menu,
+.sub-menu-parent:hover .sub-menu {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+

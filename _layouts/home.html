@@ -6,13 +6,18 @@
   <title>{{ page.title }} | Dimension Inx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css" />
-  <script src="main.js"></script>
 </head>
 <body>
+
+  {% include navigation.html %}
+
   <div class="content" id="{{ page.title | slugify }}-page">
   
     {{ content }}
   
   </div>
+
+  <script src="assets/javascript/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/javascript/index.js" type="text/javascript"></script>
 </body>
 </html>
